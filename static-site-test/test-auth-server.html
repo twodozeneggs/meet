@@ -47,7 +47,7 @@
         const resultElement = document.getElementById("result");
         const resultLink = document.getElementById("authURL");
         // Replace this with your own endpoint
-        const getAuthURL = "https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url  ";
+        const getAuthURL = "https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
         getURLElement.onclick = function () {
             fetch(getAuthURL)
@@ -78,15 +78,16 @@
             if (decodeURIComponent(code) === code) {
                 code = encodeURIComponent(codeValue.value);
             }
-            const getTokenRequest = getToken + "/" + code;
-            fetch(getTokenRequest)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (json) {
-                    accessTokenElement.innerText = JSON.stringify(json);
-                });
-        };
+        const getTokenRequest = getToken + "/" + code;
+        console.log(getTokenRequest);
+        fetch(getTokenRequest)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (json) {
+            accessTokenElement.innerText = JSON.stringify(json);
+          });
+      };
       // --------------------- END OF STEP 2
     </script>
 </body>
