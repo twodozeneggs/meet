@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -106,12 +106,8 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -129,10 +125,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,8 +139,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,59 +152,54 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
 &nbsp;
 class CitySearch extends Component {
-state = <span class="cstat-no" title="statement not covered" >{</span>
-    query: "",
-    suggestions: []
-}
 &nbsp;
-handleInputChanged = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
-    const value = <span class="cstat-no" title="statement not covered" >event.target.value;</span>
-    const suggestions = <span class="cstat-no" title="statement not covered" >this.props.locations.filter(<span class="fstat-no" title="function not covered" >(l</span>ocation) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        return location.toUpperCase().indexOf(value.toUpperCase) &gt; -1;</span>
-    });
-<span class="cstat-no" title="statement not covered" >    this.setState({ </span>
-        query: value,
-        suggestions,
-    });
-  }
-  handleItemClicked = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>uggestion) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
-      query: suggestion
-    });
-  }
+    state = <span class="cstat-no" title="statement not covered" >{</span>
+        query: '',
+        suggestions: []
+      }
+&nbsp;
+      handleInputChanged = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {</span>
+        const value = <span class="cstat-no" title="statement not covered" >event.target.value;</span>
+        const suggestions = <span class="cstat-no" title="statement not covered" >this.props.locations.filter(<span class="fstat-no" title="function not covered" >(l</span>ocation) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            return location.toUpperCase().indexOf(value.toUpperCase()) &gt; -1;</span>
+          });
+<span class="cstat-no" title="statement not covered" >        this.setState({ </span>
+            query: value,
+            suggestions, 
+        });
+      };
+&nbsp;
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nder() {
 <span class="cstat-no" title="statement not covered" >    return (</span>
-      &lt;div className="CiySearch"&gt;
+      &lt;div className="CitySearch"&gt;
           &lt;input
-          type="text"
-          className="city"
-          value={this.state.query}
-          onChange={this.handleInputChnaged}
-          /&gt;
-          &lt;ul className="suggestions"&gt;
-          {this.state.suggestions.map(<span class="fstat-no" title="function not covered" >(s</span>uggestion) =&gt; (
-<span class="cstat-no" title="statement not covered" >    &lt;li key={suggestion}</span>
-    onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleItemClicked(suggestion)}</span>
-    &gt;{suggestion}&lt;/li&gt;
-  ))}
-  &lt;li&gt;
-    &lt;b&gt;See all cities&lt;/b&gt;
-  &lt;/li&gt;
-          &lt;/ul&gt;
+        type="text"
+        className="city"
+        value={this.state.query}
+        onChange={this.handleInputChanged}
+      /&gt;
+      &lt;ul className="suggestions"&gt;
+        {this.state.suggestions.map(<span class="fstat-no" title="function not covered" >(s</span>uggestion) =&gt; (
+<span class="cstat-no" title="statement not covered" >            &lt;li key={suggestion}&gt;{suggestion}&lt;/li&gt;</span>
+        ))}
+            &lt;li key='all'&gt;
+                &lt;b&gt;See all cities&lt;/b&gt;
+            &lt;/li&gt;
+      &lt;/ul&gt;
       &lt;/div&gt;
     );
   }
 }
 &nbsp;
-export default CitySearch;</pre></td></tr></table></pre>
+export default CitySearch; </pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu May 19 2022 00:52:46 GMT-0500 (Central Daylight Time)
+                at Thu May 19 2022 15:18:45 GMT-0500 (Central Daylight Time)
             </div>
         <script src="prettify.js"></script>
         <script>
