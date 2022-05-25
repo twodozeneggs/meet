@@ -6,6 +6,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import axios from 'axios';
+import './nprogress'; 
 
 export const getAccessToken = async () => {
   
