@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { mockData } from './mock-data';
 import { getEvents, extractLocations } from './api';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import axios from 'axios';
-import './nprogress'; 
+import './nprogress.css'; 
 
 export const getAccessToken = async () => {
   
