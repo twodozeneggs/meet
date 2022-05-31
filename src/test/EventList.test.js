@@ -13,9 +13,4 @@ describe('<EventList /> component', () => {
         const EventListWrapper = shallow(<EventList events={mockData} />);
         expect(EventListWrapper.find(Event)).toHaveLength(mockData.length);
     });
-
-    test('render CitySearch', () => {
-        const AppWrapper = shallow(<App />);
-        expect(AppWrapper.find(CitySearch)).toHaveLength(1);
-    });
 });

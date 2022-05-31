@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import Event from './Event';
 
-class EventList extends Component {
+class Event extends Component {
   render() {
-    const { events } = this.props;
+    const { event } = this.props;
     return (
-      <ul className="EventList">
-          {events.map(event =>
-            <li key={event.id}>
-                <Event event={event} />
-            </li>
-          )}
-      </ul>
+      // <ul className="EventList">
+      //     {events.map(event =>
+      //       <li key={event.id}>
+      //           <Event event={event} />
+      //       </li>
+      //     )}
+      // </ul>
+      <div>
+        <h2>{event.summary}</h2>
+      </div>
     );
   }
 }
 
-export default EventList;
+export default Event;

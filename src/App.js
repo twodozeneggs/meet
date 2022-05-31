@@ -12,6 +12,7 @@ export const getAccessToken = async () => {
 
 class App extends Component {
   state = {
+    numberOfEvents: 32,
     events: [],
     locations: []
   }
@@ -44,7 +45,7 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
-        <NumberOfEvents/>
+        <NumberOfEvents />
       </div>
     );
   }

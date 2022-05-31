@@ -18,7 +18,7 @@ class CitySearch extends Component {
         });
       };
 
-      handelItemClicked = (suggestion) => {
+      handleItemClicked = (suggestion) => {
         this.setState({
           query: suggestion,
           showSuggestions: false
