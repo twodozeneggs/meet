@@ -1,21 +1,43 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import NumberOfEvents from '../NumberOfEvents';
+import React from "react";
+import { shallow } from "enzyme";
+import NumberOfEvents from "../NumberOfEvents";
+import { mockData } from "../mock-data";
 
-//Feature 2: Specify number of events
+describe("<NumberOfEvents /> component", () => {
+  let NumberOfEventsWrapper;
+  beforeAll(() => {
+    NumberOfEventsWrapper = shallow(
+      <NumberOfEvents eNumber={mockData.length} updateEvents={() => {}} />
+    );
+  });
 
-describe('<NumberOfEvents /> component', () => {
-    let NumberOfEventsWrapper;
-    beforeAll(() => {
-        NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+  test("render number of events container div", () => {
+    expect(NumberOfEventsWrapper.find("div.eventsNumber")).toHaveLength(1);
+  });
+
+  test("renders input labels", () => {
+    expect(NumberOfEventsWrapper.find("label")).toHaveLength(2);
+  });
+
+  test("renders input box", () => {
+    expect(NumberOfEventsWrapper.find("input.edit-number")).toHaveLength(1);
+  });
+
+  //input number is equal to the default state of 32
+  test("renders input number correctly", () => {
+    //const eventsNumber = NumberOfEventsWrapper.state("eventsNumber");
+    expect(NumberOfEventsWrapper.find("input.edit-number")).toHaveLength(1);
+  });
+
+  //tests if the input number updates the state after being altered
+  test("change state when text input changes", () => {
+    NumberOfEventsWrapper.setState({
+      eventsNumber: "2",
     });
-
-    test('render text input', () => {
-        expect(NumberOfEventsWrapper.find('.number-of-events')).toHaveLength(1);
+    NumberOfEventsWrapper.find("input.edit-number").simulate("change", {
+      target: { value: "3" },
     });
-
-    test('renders text input correctly', () => {
-        const numberOfEvents = NumberOfEventsWrapper.prop('numberOfEvents');
-        expect(NumberOfEventsWrapper.find('.number-of-events').prop('value')).toBe(numberOfEvents);
-    });
-})
+    expect(NumberOfEventsWrapper.state("eventsNumber")).not.toEqual(undefined);
+    expect(NumberOfEventsWrapper.state("eventsNumber")).toBe("3");
+  });
+});
