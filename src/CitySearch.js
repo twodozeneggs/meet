@@ -4,7 +4,7 @@ class CitySearch extends Component {
     state = {
         query: '',
         suggestions: [],
-        showSuggestions: false
+        showSuggestions: undefined
       }
 
       handleInputChanged = (event) => {
@@ -40,6 +40,7 @@ class CitySearch extends Component {
       <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
         {this.state.suggestions.map((suggestion) => (
             <li 
+            className='suggestion-item'
             key={suggestion}
               onClick={() => this.handleItemClicked(suggestion)}
             >{suggestion}</li>

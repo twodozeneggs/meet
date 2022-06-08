@@ -11,14 +11,13 @@ import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
 
-
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
 };
 
-export const checkToken = async (accessToken) => {
+const checkToken = async (accessToken) => {
   const result = await fetch(
       `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
@@ -56,7 +55,7 @@ export const getEvents = async () => {
 
   if (token) {
       removeQuery();
-      const url = 'https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url/' + token;
+      const url = 'https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url' + '/' + token;
       const result = await axios.get(url);
       if (result.data) {
           var locations = extractLocations(result.data.events);
@@ -76,9 +75,9 @@ export const getAccessToken = async () => {
       await localStorage.removeItem("access_token");
       const searchParams = new URLSearchParams(window.location.search);
       const code = await searchParams.get("code");
-      if (!code) {
+     if (!code) {
           const results = await axios.get(
-              "https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+              "https://onjn9p7r1k.execute-api.eu-west-2.amazonaws.com/dev/api/get-auth-url"
           );
           const { authUrl } = results.data;
           return (window.location.href = authUrl);
@@ -93,7 +92,7 @@ export const getAccessToken = async () => {
 const getToken = async (code) => {
   try {
       const encodeCode = encodeURIComponent(code);
-      const response = await fetch('https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/token/' + encodeCode);
+      const response = await fetch('https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode);
       if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
       }

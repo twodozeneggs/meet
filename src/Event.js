@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
 
-class Event extends Component {
-  render() {
-    const { event } = this.props;
-    return (
-      // <ul className="EventList">
-      //     {events.map(event =>
-      //       <li key={event.id}>
-      //           <Event event={event} />
-      //       </li>
-      //     )}
-      // </ul>
+const Event = (props) => {
+  const [showDetails, setShowDetails] = useState(false);
+  const { event } = props;
+
+  const handleClick = () => {
+    setShowDetails(!showDetails);
+  };
+
+  return (
+    <div className="event">
+      <h2>{event.summary}</h2>
       <div>
-        <h2>{event.summary}</h2>
+        <div>
+          <p>{event.location}</p>
+        </div>
+        {showDetails && (
+          <div className="extra-details">
+            <p>{event.description}</p>
+            <a href={event.htmlLink} rel="noreferrer" target="_blank">
+              Open
+            </a>
+          </div>
+        )}
+        <button className="event__detailsButton" onClick={handleClick}>
+          {showDetails ? "Hide Details" : "Show Details"}
+        </button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Event;
