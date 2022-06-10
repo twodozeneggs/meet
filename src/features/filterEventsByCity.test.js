@@ -59,7 +59,7 @@ defineFeature(feature, (test) => {
     let AppWrapper;
     given("user was typing “Berlin” in the city textbox", async() => {
         AppWrapper = await mount(<App/>);
-        AppWrapper.find('.city').simulate('change', {target:{value: 'Berlin'}})
+        AppWrapper.find('.city').simulate('change', {target: {value: 'Berlin'}})
     });
 
     and("the list of suggested cities is showing", () => {
