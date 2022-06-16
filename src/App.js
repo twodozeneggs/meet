@@ -4,7 +4,7 @@ import { getEvents, extractLocations } from './api';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-//import EventGenre from './EventGenre';
+import EventGenre from './EventGenre';
 import './nprogress.css'; 
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -57,7 +57,7 @@ class App extends Component {
   };
 
   render() {
-    const { locations, numberOfEvents } = this.state;
+    const { locations, numberOfEvents, events } = this.state;
     return (
       <div className="App">
         <h1>Meet App</h1>

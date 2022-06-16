@@ -20,7 +20,7 @@ const EventGenre = ({ events }) => {
     };
 
     setData(() => getData());
-  }, [events]);3
+  }, [events]);
 
   return (
     <ResponsiveContainer height={400}>
