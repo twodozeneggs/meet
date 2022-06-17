@@ -4,7 +4,6 @@ import { getEvents, extractLocations } from './api';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import EventGenre from './EventGenre';
 import './nprogress.css'; 
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -17,7 +16,8 @@ class App extends Component {
   state = {
     numberOfEvents: 32,
     events: [],
-    locations: []
+    locations: [],
+    location: 'all',
   }
 
   componentDidMount() {
@@ -33,16 +33,26 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location) => {
+  updateEvents = (location = this.state.location, eventCount = this.state.numberOfEvents) => {
+    console.log({location, eventCount})
     getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
-        events :
-        events.filter((event) => event.location === location);
+      const locationEvents = location === "all" ? events
+          : events.filter((event) => event.location === location);
+          console.log("==locationEvents==", locationEvents.length, events.length)
+      // if (this.mounted) {
+        // this.setState({
+        //   location,
+        //   events: locationEvents.slice(0, this.state.numberOfEvents),
+        //   numberOfEvents: eventCount,
+        // });
+      // }
       this.setState({
-        events: locationEvents
+        location,
+        events: locationEvents.slice(0, +this.state.numberOfEvents),
+        numberOfEvents: eventCount,
       });
     });
-  }
+  };
 
   getData = () => {
     const {locations, events} = this.state;
@@ -57,7 +67,7 @@ class App extends Component {
   };
 
   render() {
-    const { locations, numberOfEvents, events } = this.state;
+    const { locations, numberOfEvents } = this.state;
     return (
       <div className="App">
         <h1>Meet App</h1>
@@ -65,7 +75,7 @@ class App extends Component {
         <CitySearch updateEvents={this.updateEvents} locations={locations} />
         <NumberOfEvents
           updateEvents={this.updateEvents}
-          numberofEvents={numberOfEvents} 
+          numberOfEvents={numberOfEvents} 
         />
         <div className="data-vis-wrapper">
         <ResponsiveContainer height={400} >
@@ -99,7 +109,6 @@ class App extends Component {
             <Scatter data={this.getData()} fill="#8884d8" />
           </ScatterChart>
         </ResponsiveContainer> */ }
-        <EventList events={this.state.events} />
         <EventList events={this.state.events} />
       </div>
     );
