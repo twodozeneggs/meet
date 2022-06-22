@@ -89,21 +89,15 @@ export const getAccessToken = async () => {
 
 
 //new token
-const getToken = async (code) => {
+const getToken = (code) => {
     const encodeCode = encodeURIComponent(code);
-    const { access_token } = await fetch(
-      "https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/token/" +
-        encodeCode
-    )
+    const { access_token } = fetch( "https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + encodeCode)
       .then((res) => {
         return res.json();
       })
-      .catch((error) => error);
+      .catch((error) => console.log(error));
   
     access_token && localStorage.setItem("access_token", access_token);
-  
     return access_token;
   };
-
-
 

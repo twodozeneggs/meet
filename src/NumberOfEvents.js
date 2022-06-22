@@ -10,12 +10,13 @@ class NumberOfEvents extends Component {
 
   handleInputChanged = event => {
     let value = event.target.value;
-    if (value === '') { value = undefined };
     // If value is negative or greater 32, display an error, else update list of events
-    if (value < 0 || value > 32) {
+    if (value < 1 || value > 32) {
       this.setState({
-        errorText: 'Select a number from 1 to 32'
+        errorText: 'Select a number from 1 to 32',
+        eventNumber: value,
       });
+      return
     } else {
       this.setState({
         eventNumber: value, 
