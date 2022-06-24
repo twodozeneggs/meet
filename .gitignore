@@ -3,3 +3,5 @@ node_modules
 
 #environment variables 
 config.json
+
+git push origin $(git subtree split --prefix public main):gh-pages --force
