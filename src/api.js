@@ -12,6 +12,7 @@ import axios from 'axios';
 import NProgress from 'nprogress';
 
 export const extractLocations = (events) => {
+  console.log({events})
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
@@ -79,6 +80,7 @@ export const getAccessToken = async () => {
           const results = await axios.get(
              "https://l1s1cbtnk8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" 
           );
+          console.log("==results==", results)
           const { authUrl } = results.data;
           return (window.location.href = authUrl);
       }
