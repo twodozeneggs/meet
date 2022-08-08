@@ -4,6 +4,7 @@ import { getEvents, extractLocations } from "./api";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
+import EventGenre from "./EventGenre";
 import "./nprogress.css";
 import {
   ScatterChart,
@@ -79,7 +80,7 @@ class App extends Component {
   };
 
   render() {
-    const { locations, numberOfEvents } = this.state;
+    const { locations, numberOfEvents, events } = this.state;
     return (
       <div className="App">
         <h1>Meet App</h1>
@@ -90,6 +91,7 @@ class App extends Component {
           numberOfEvents={numberOfEvents}
         />
         <div className="data-vis-wrapper">
+          <EventGenre events={events}/>
           <ResponsiveContainer height={400}>
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
